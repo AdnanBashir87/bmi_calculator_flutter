@@ -1,4 +1,5 @@
 import 'package:bmi_calculator_flutter/constants.dart';
+import 'package:bmi_calculator_flutter/models/myContainer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,8 +18,28 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('BMI CALCULATOR'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text('body Text'),
+      body: const Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(child: MyContainer()),
+                Expanded(child: MyContainer()),
+              ],
+            ),
+          ),
+          Expanded(
+            child: MyContainer(),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(child: MyContainer()),
+                Expanded(child: MyContainer()),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
