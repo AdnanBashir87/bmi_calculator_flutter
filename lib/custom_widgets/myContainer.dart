@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class MyContainer extends StatelessWidget {
-  const MyContainer({super.key});
+class ReUseableContainer extends StatelessWidget {
+  final Color cardColor;
+  final child;
+  const ReUseableContainer({
+    super.key,
+    required this.cardColor,
+    this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +20,7 @@ class MyContainer extends StatelessWidget {
         color: cardColor,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: const Text(
-        'Adnan',
-        style: TextStyle(fontSize: 23),
-      ),
+      child: child,
     );
   }
 }
