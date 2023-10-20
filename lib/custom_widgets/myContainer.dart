@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class ReUseableContainer extends StatelessWidget {
+class ReusableContainer extends StatelessWidget {
   final Color cardColor;
   final child;
-  const ReUseableContainer({
+  const ReusableContainer({
     super.key,
     required this.cardColor,
     this.child,
