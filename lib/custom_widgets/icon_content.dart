@@ -5,8 +5,7 @@ import '../constants.dart';
 class IconContent extends StatelessWidget {
   final IconData sex;
   final String text;
-  IconContent({super.key, required this.sex, required this.text});
-  TextStyle labelTextStyle = TextStyle(fontSize: 18, color: textColor1);
+  const IconContent({super.key, required this.sex, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class IconContent extends StatelessWidget {
         const SizedBox(height: 15),
         Text(
           text,
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         ),
       ],
     );

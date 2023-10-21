@@ -17,6 +17,12 @@ enum Gender { male, female }
 class _HomeScreenState extends State<HomeScreen> {
   Gender selectedGender = Gender.male;
 
+  void onPress(Gender gender) {
+    setState(() {
+      selectedGender = gender;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,45 +31,40 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableContainer(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
                       });
-                      print('male card is pressed');
                     },
-                    child: ReusableContainer(
-                      cardColor: selectedGender == Gender.male
-                          ? cardColor
-                          : inActiveCardColor,
-                      child: IconContent(
-                        sex: FontAwesomeIcons.mars,
-                        text: 'MALE',
-                      ),
+                    cardColor: selectedGender == Gender.male
+                        ? kCardColor
+                        : kInActiveCardColor,
+                    cardChild: const IconContent(
+                      sex: FontAwesomeIcons.mars,
+                      text: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableContainer(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
-                      print('female Card is Pressed');
                     },
-                    child: ReusableContainer(
-                      cardColor: selectedGender == Gender.female
-                          ? cardColor
-                          : inActiveCardColor,
-                      child: IconContent(
-                        sex: FontAwesomeIcons.venus,
-                        text: 'FEMALE',
-                      ),
+                    cardColor: selectedGender == Gender.female
+                        ? kCardColor
+                        : kInActiveCardColor,
+                    cardChild: const IconContent(
+                      sex: FontAwesomeIcons.venus,
+                      text: 'FEMALE',
                     ),
                   ),
                 ),
@@ -72,7 +73,22 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Expanded(
             child: ReusableContainer(
-              cardColor: cardColor,
+              cardColor: kCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('Height', style: kLabelTextStyle),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    children: const [
+                      Text('180', style: kHeightWeightAge),
+                      Text('cm', style: kLabelTextStyle),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -80,12 +96,14 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                   child: ReusableContainer(
-                    cardColor: cardColor,
+                    cardChild: Container(),
+                    cardColor: kCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableContainer(
-                    cardColor: cardColor,
+                    cardChild: Container(),
+                    cardColor: kCardColor,
                   ),
                 ),
               ],
