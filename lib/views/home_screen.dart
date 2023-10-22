@@ -1,4 +1,5 @@
 import 'package:bmi_calculator_flutter/constants.dart';
+import 'package:bmi_calculator_flutter/custom_widgets/round_Button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,6 +17,9 @@ enum Gender { male, female }
 
 class _HomeScreenState extends State<HomeScreen> {
   Gender selectedGender = Gender.male;
+  int height = 150;
+  int weight = 50;
+  int age = 18;
 
   void onPress(Gender gender) {
     setState(() {
@@ -79,13 +83,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text('Height', style: kLabelTextStyle),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
-                    children: const [
-                      Text('180', style: kHeightWeightAge),
-                      Text('cm', style: kLabelTextStyle),
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(height.toString(), style: kHeightWeightAge),
+                      const SizedBox(width: 10),
+                      const Text('cm', style: kLabelTextStyle),
                     ],
+                  ),
+                  const SizedBox(height: 10),
+                  Slider(
+                    min: 120,
+                    max: 220,
+                    thumbColor: Colors.pink,
+                    activeColor: kWhite,
+                    inactiveColor: kTextColor,
+                    value: height.toDouble(),
+                    onChanged: (double newVal) {
+                      setState(() {
+                        height = newVal.toInt();
+                      });
+                    },
                   )
                 ],
               ),
@@ -96,19 +117,107 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                   child: ReusableContainer(
-                    cardChild: Container(),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Weight",
+                          style: kLabelTextStyle,
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(weight.toString(), style: kHeightWeightAge),
+                            const SizedBox(width: 10),
+                            const Text('kg', style: kLabelTextStyle),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundButton(
+                              icon: Icons.exposure_minus_1,
+                              onPress: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            const SizedBox(width: 10),
+                            RoundButton(
+                              icon: Icons.add,
+                              onPress: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                     cardColor: kCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableContainer(
-                    cardChild: Container(),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Age",
+                          style: kLabelTextStyle,
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(age.toString(), style: kHeightWeightAge),
+                            const SizedBox(width: 10),
+                            const Text('years', style: kLabelTextStyle),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundButton(
+                              icon: Icons.exposure_minus_1,
+                              onPress: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            const SizedBox(width: 10),
+                            RoundButton(
+                              icon: Icons.add,
+                              onPress: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                     cardColor: kCardColor,
                   ),
                 ),
               ],
             ),
           ),
+          Container(
+            height: 70,
+            color: Colors.pink,
+          )
         ],
       ),
     );
