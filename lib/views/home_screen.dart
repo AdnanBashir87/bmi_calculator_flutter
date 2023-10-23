@@ -95,18 +95,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Slider(
-                    min: 120,
-                    max: 220,
-                    thumbColor: Colors.pink,
-                    activeColor: kWhite,
-                    inactiveColor: kTextColor,
-                    value: height.toDouble(),
-                    onChanged: (double newVal) {
-                      setState(() {
-                        height = newVal.toInt();
-                      });
-                    },
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      inactiveTrackColor: kTextColor,
+                      activeTrackColor: kWhite,
+                      thumbColor: kPinkColor,
+                      overlayColor: kTransparentPinkColor,
+                      thumbShape:
+                          const RoundSliderThumbShape(enabledThumbRadius: 15),
+                      overlayShape:
+                          const RoundSliderOverlayShape(overlayRadius: 30),
+                    ),
+                    child: Slider(
+                      min: 120,
+                      max: 220,
+                      value: height.toDouble(),
+                      onChanged: (double newVal) {
+                        setState(() {
+                          height = newVal.toInt();
+                        });
+                      },
+                    ),
                   )
                 ],
               ),
@@ -216,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Container(
             height: 70,
-            color: Colors.pink,
+            color: kPinkColor,
           )
         ],
       ),
