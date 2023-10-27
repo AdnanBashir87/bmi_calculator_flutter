@@ -130,25 +130,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Weight",
+                          "WEIGHT",
                           style: kLabelTextStyle,
                         ),
                         const SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            Text(weight.toString(), style: kHeightWeightAge),
-                            const SizedBox(width: 10),
-                            const Text('kg', style: kLabelTextStyle),
-                          ],
-                        ),
+                        Text(weight.toString(), style: kHeightWeightAge),
                         const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
                           children: [
                             RoundButton(
                               icon: FontAwesomeIcons.minus,
@@ -160,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(width: 10),
                             RoundButton(
-                              icon: Icons.add,
+                              icon: FontAwesomeIcons.plus,
                               onPress: () {
                                 setState(() {
                                   weight++;
@@ -179,21 +168,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "Age",
-                          style: kLabelTextStyle,
-                        ),
+                        const Text("AGE", style: kLabelTextStyle),
                         const SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            Text(age.toString(), style: kHeightWeightAge),
-                            const SizedBox(width: 10),
-                            const Text('years', style: kLabelTextStyle),
-                          ],
-                        ),
+                        Text(age.toString(), style: kHeightWeightAge),
                         const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -208,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(width: 10),
                             RoundButton(
-                              icon: Icons.add,
+                              icon: FontAwesomeIcons.plus,
                               onPress: () {
                                 setState(() {
                                   age++;
@@ -225,10 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Container(
-            height: 70,
-            color: kPinkColor,
-          )
+          Container(height: 70, color: kPinkColor)
         ],
       ),
     );

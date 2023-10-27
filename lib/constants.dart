@@ -7,6 +7,7 @@ const kInActiveCardColor = Color(0xFF0D1128);
 const kTextColor = Color(0xFF8D8E98);
 const kPinkColor = Color(0xFFEB1555);
 const kTransparentPinkColor = Color(0x29EB1555);
+const kIconColor = Color(0xFF4C4F5E);
 
 // Styles for texts
 const kLabelTextStyle = TextStyle(fontSize: 18, color: kTextColor);
