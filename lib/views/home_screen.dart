@@ -147,9 +147,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
                           children: [
                             RoundButton(
-                              icon: Icons.exposure_minus_1,
+                              icon: FontAwesomeIcons.minus,
                               onPress: () {
                                 setState(() {
                                   weight--;
@@ -197,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             RoundButton(
-                              icon: Icons.exposure_minus_1,
+                              icon: FontAwesomeIcons.minus,
                               onPress: () {
                                 setState(() {
                                   age--;
