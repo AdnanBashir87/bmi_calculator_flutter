@@ -202,7 +202,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Container(height: 70, color: kPinkColor)
+          Container(
+            height: 70,
+            color: kPinkColor,
+            child: TextButton(
+              onPressed: () {},
+              child: Text(
+                'CALCULATE',
+                style: kLabelTextStyle.copyWith(color: kWhite),
+              ),
+            ),
+          )
         ],
       ),
     );
