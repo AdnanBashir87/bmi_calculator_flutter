@@ -17,11 +17,7 @@ class BMI_Calculator extends StatelessWidget {
         scaffoldBackgroundColor: kPrimaryColor,
         appBarTheme: const AppBarTheme(color: kPrimaryColor),
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomeScreen(),
-        '/result': (context) => const Results(),
-      },
+      home: const HomeScreen(),
     );
   }
 }

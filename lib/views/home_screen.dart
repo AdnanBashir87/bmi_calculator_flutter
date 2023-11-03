@@ -1,10 +1,12 @@
+import 'package:bmi_calculator_flutter/appBrain.dart';
+import 'package:bmi_calculator_flutter/components/calculate_button.dart';
+import 'package:bmi_calculator_flutter/components/icon_content.dart';
+import 'package:bmi_calculator_flutter/components/myContainer.dart';
+import 'package:bmi_calculator_flutter/components/round_Button.dart';
 import 'package:bmi_calculator_flutter/constants.dart';
-import 'package:bmi_calculator_flutter/custom_widgets/round_Button.dart';
+import 'package:bmi_calculator_flutter/views/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../custom_widgets/icon_content.dart';
-import '../custom_widgets/myContainer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -82,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('Height', style: kLabelTextStyle),
+                  const Text('Height', style: kSimpleTextStyle),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Text(height.toString(), style: kHeightWeightAge),
                       const SizedBox(width: 10),
-                      const Text('cm', style: kLabelTextStyle),
+                      const Text('cm', style: kSimpleTextStyle),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -131,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         const Text(
                           "WEIGHT",
-                          style: kLabelTextStyle,
+                          style: kSimpleTextStyle,
                         ),
                         const SizedBox(height: 10),
                         Text(weight.toString(), style: kHeightWeightAge),
@@ -168,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("AGE", style: kLabelTextStyle),
+                        const Text("AGE", style: kSimpleTextStyle),
                         const SizedBox(height: 10),
                         Text(age.toString(), style: kHeightWeightAge),
                         const SizedBox(height: 10),
@@ -202,16 +204,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Container(
-            height: 70,
-            color: kPinkColor,
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                'CALCULATE',
-                style: kLabelTextStyle.copyWith(color: kWhite),
-              ),
-            ),
+          CalculateButton(
+            onPress: () {
+              AppBrain calculate = AppBrain(weight: weight, height: height);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Results(
+                    calculations: calculate,
+                  ),
+                ),
+              );
+            },
+            buttonText: 'CALCULATE',
           )
         ],
       ),
